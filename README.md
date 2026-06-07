@@ -12,3 +12,8 @@ cd music-visualizer
 cmake -S . -B ./build -G Ninja
 cmake --build build
 ```
+
+## Usage
+
+Put the music files in the "resources" folder
+
