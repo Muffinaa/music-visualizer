@@ -1,12 +1,12 @@
 #include "debug.h"
 #include <cstring>
 #include <filesystem>
-#include <iostream>
-#include <vector>
 #include <imgui.h>
+#include <iostream>
 #include <raylib.h>
 #include <rlImGui.h>
-
+#include <string>
+#include <vector>
 
 void DebugImGUI::Init() {
   rlImGuiSetup(true);
@@ -30,7 +30,6 @@ void DebugImGUI::Init() {
 void DebugImGUI::Draw() {
   rlImGuiBegin();
   {
-
     ImGui::PushStyleColor(ImGuiCol_WindowBg, {});
     ImGui::PushStyleColor(ImGuiCol_DockingEmptyBg, {});
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport()->ID);
@@ -48,9 +47,11 @@ void DebugImGUI::Draw() {
       }
       ImGui::SameLine();
       if (ImGui::Button("Refresh")) {
-        std::string folder = "resources/";
-        m_ctx->music_name = m_music_entries[m_selected_music];
-        m_LoadMusic(folder.append(m_music_entries[m_selected_music]).c_str());
+        cfiles.clear();
+        m_music_entries = m_ReturnMusicList("resources");
+        cfiles.reserve(m_music_entries.size());
+        for (const auto &f : m_music_entries)
+          cfiles.emplace_back(f.c_str());
       }
     }
     ImGui::End();
