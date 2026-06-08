@@ -162,8 +162,8 @@ void Visualizer::Draw() {
       Color col = m_ctx.mouse_lock ? RED : WHITE;
       DrawText("[P] toggle playing", 20, 34, 16, WHITE);
       DrawText("[M] toggle cursor", 20, 54, 16, col);
-      DrawText("[Z] reset position", 20, 74, 16, col);
-      DrawText("[I] toggle settings", 20, 94, 16, col);
+      DrawText("[Z] reset position", 20, 74, 16, WHITE);
+      DrawText("[I] toggle settings", 20, 94, 16, WHITE);
       DrawFPS(10, 10);
       m_dMenu.Draw();
     }
